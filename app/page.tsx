@@ -25,10 +25,10 @@ export const metadata: Metadata = {
       "Discover the Eternal Hope Necklace, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
     images: [
       {
-        url: "/products/gold/2.jpg",
-        width: 1000,
-        height: 1000,
-        alt: "Gold Eternal Hope Necklace beside a luxury wood gift box"
+        url: "/brand/og-logo.png",
+        width: 1536,
+        height: 1024,
+        alt: "Beyond Label Gifts logo"
       }
     ]
   }

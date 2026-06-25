@@ -30,10 +30,10 @@ export const metadata: Metadata = {
     siteName: "Beyond Label Gifts",
     images: [
       {
-        url: "/products/gold/2.jpg",
-        width: 1000,
-        height: 1000,
-        alt: "Gold Eternal Hope Necklace beside a luxury wood gift box"
+        url: "/brand/og-logo.png",
+        width: 1536,
+        height: 1024,
+        alt: "Beyond Label Gifts logo"
       }
     ]
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/products/gold/2.jpg"]
+    images: ["/brand/og-logo.png"]
   },
   icons: {
     icon: [{ url: "/brand/logo.png", type: "image/png" }],

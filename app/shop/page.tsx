@@ -11,10 +11,10 @@ export const metadata: Metadata = {
       "Shop the Eternal Hope Necklace in silver for $29.99 or gold for $39.99. A meaningful keepsake necklace designed to represent bond, love, gratitude, and appreciation.",
     images: [
       {
-        url: "/products/silver/1.jpg",
-        width: 1000,
-        height: 1000,
-        alt: "Silver Eternal Hope Necklace beside a luxury wood gift box"
+        url: "/brand/og-logo.png",
+        width: 1536,
+        height: 1024,
+        alt: "Beyond Label Gifts logo"
       }
     ]
   }
