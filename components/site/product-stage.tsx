@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Gift, ShieldCheck, Sparkles } from "lucide-react"
 import { productImages } from "@/data/site"
 import { cn } from "@/lib/utils"
@@ -144,34 +144,6 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
 
             <div className="relative z-10 w-full max-w-[430px] space-y-4">
               <NecklaceShowcase finish={finish} />
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={finish}
-                  initial={{ opacity: 0, y: 18, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -16, scale: 0.98 }}
-                  transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative pt-24"
-                >
-                  <div className="absolute inset-x-6 bottom-4 top-24 rounded-[2rem] bg-black/48 blur-3xl" />
-                  <Link
-                    href="/shop"
-                    className="group relative block overflow-hidden rounded-[2rem] border border-white/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-3 shadow-halo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]"
-                    aria-label={`Open ${finishes[finish].label} details`}
-                  >
-                    <div className="pointer-events-none absolute inset-x-8 top-0 h-20 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_68%)] opacity-60" />
-                    <Image
-                      src={finishes[finish].image}
-                      alt={finishes[finish].alt}
-                      width={1000}
-                      height={1000}
-                      className="h-auto w-full rounded-[1.5rem] object-cover transition-transform duration-500 group-hover:scale-[1.01]"
-                      priority
-                    />
-                  </Link>
-                </motion.div>
-              </AnimatePresence>
 
               <div className="grid gap-2 rounded-[1.6rem] border border-white/10 bg-black/24 p-3 text-sm text-white/84 sm:grid-cols-3">
                 <div className="rounded-[1.1rem] bg-white/5 px-3 py-3">

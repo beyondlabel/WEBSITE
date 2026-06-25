@@ -49,7 +49,7 @@ export default function HomePage() {
               </h1>
               <p className="max-w-3xl text-base leading-8 text-foreground/76 sm:text-lg">
                 The biggest mistake most stores make is thinking they are selling jewelry. Beyond
-                Label Gifts is built around something deeper: recognition, gratitude, and words
+                Labels Gifts is built around something deeper: recognition, gratitude, and words
                 someone has struggled to say out loud.
               </p>
               <div className="flex flex-wrap gap-2 text-sm text-white/82">
@@ -107,7 +107,7 @@ export default function HomePage() {
                   A moment that becomes a memory.
                 </h2>
                 <p className="max-w-xl text-base leading-8 text-foreground/74">
-                  At Beyond Label Gifts, we believe the most meaningful gifts are not the most
+                  At Beyond Labels Gifts, we believe the most meaningful gifts are not the most
                   expensive. They are the ones that make someone stop, smile, and say, &quot;I
                   really needed to hear that.&quot;
                 </p>
