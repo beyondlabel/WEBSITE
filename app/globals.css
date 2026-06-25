@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&family=Parisienne&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 260 22% 7%;
+  --foreground: 35 70% 94%;
+  --card: 258 20% 12%;
+  --card-foreground: 35 70% 94%;
+  --popover: 258 20% 12%;
+  --popover-foreground: 35 70% 94%;
+  --primary: 39 58% 68%;
+  --primary-foreground: 260 20% 8%;
+  --secondary: 266 21% 17%;
+  --secondary-foreground: 35 70% 94%;
+  --muted: 264 22% 16%;
+  --muted-foreground: 34 24% 73%;
+  --accent: 277 66% 67%;
+  --accent-foreground: 35 70% 94%;
+  --border: 34 22% 22%;
+  --input: 34 22% 22%;
+  --ring: 39 58% 68%;
+  --lavender: 277 66% 67%;
+  --gold: 39 58% 68%;
+  --plum: 271 48% 16%;
+  --midnight: 258 31% 8%;
+  --font-display: "Marcellus";
+  --font-body: "Manrope";
+  --font-script: "Parisienne";
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(217, 174, 102, 0.14), transparent 24%),
+    radial-gradient(circle at 90% 18%, rgba(174, 93, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 20% 86%, rgba(174, 93, 255, 0.12), transparent 22%),
+    linear-gradient(180deg, #09070f 0%, #130f1e 34%, #0b0911 100%);
+  color: hsl(var(--foreground));
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(196, 151, 88, 0.35);
+  color: white;
+}
+
+.site-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.site-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  background-image:
+    linear-gradient(transparent 0, rgba(255, 255, 255, 0.05) 50%, transparent 100%),
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px),
+    radial-gradient(circle at 78% 34%, rgba(255, 255, 255, 0.28) 0 1px, transparent 1px),
+    radial-gradient(circle at 34% 75%, rgba(255, 255, 255, 0.2) 0 1px, transparent 1px);
+  background-size: auto, 160px 160px, 190px 190px, 220px 220px;
+}
+
+.luxury-panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(9, 7, 15, 0.72);
+  backdrop-filter: blur(16px);
+}
+
+.prose-rich {
+  max-width: 74ch;
+}
+
+.prose-rich h2 {
+  margin-top: 2.5rem;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.85rem, 1.7vw + 1.1rem, 2.7rem);
+  line-height: 1.02;
+  color: white;
+}
+
+.prose-rich p {
+  margin-top: 1.1rem;
+  color: rgba(244, 236, 226, 0.78);
+  line-height: 2;
+}
+
+.prose-rich strong {
+  color: white;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
