@@ -18,7 +18,7 @@ export default function ArticlesPage() {
           {articleSummaries.map((article, index) => (
             <article
               key={article.slug}
-              className="grid overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] lg:grid-cols-[0.4fr_0.6fr]"
+              className="grid overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045] transition-colors duration-300 hover:border-gold/25 lg:grid-cols-[0.34fr_0.66fr]"
             >
               <Link
                 href={`/articles/${article.slug}`}

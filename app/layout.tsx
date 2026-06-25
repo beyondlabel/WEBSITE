@@ -57,6 +57,20 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-background font-body text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Beyond Label Gifts",
+              url: "https://beyondlabelgifts.com",
+              description,
+              slogan: "Every Story. Beyond Label.",
+              sameAs: ["https://instagram.com/beyondlabelgifts"]
+            })
+          }}
+        />
         <div className="site-noise" aria-hidden="true" />
         <div className="site-frame">
           <SiteNavbar />

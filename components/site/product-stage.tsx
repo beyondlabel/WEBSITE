@@ -40,7 +40,7 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
       <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2rem] bg-glow blur-2xl" />
       <div
         className={cn(
-          "relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#130f1d]/85 p-4 shadow-velvet backdrop-blur-sm sm:p-6",
+          "relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#130f1d]/85 p-4 shadow-velvet backdrop-blur-sm sm:p-6 lg:p-7",
           compact && "rounded-[1.75rem]"
         )}
         style={{
@@ -78,11 +78,12 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
                   type="button"
                   onClick={() => setFinish(item)}
                   className={cn(
-                    "rounded-2xl border p-3 text-left transition-all duration-300",
+                    "block w-full rounded-2xl border p-3 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]",
                     finish === item
                       ? "border-gold/45 bg-gold/10 text-white"
                       : "border-white/10 bg-white/5 text-foreground/72 hover:border-lavender/45 hover:bg-lavender/5"
                   )}
+                  aria-pressed={finish === item}
                 >
                   <div className="flex items-center gap-3">
                     <div className="relative h-14 w-14 overflow-hidden rounded-[0.9rem] border border-white/10 bg-white/5">
@@ -156,7 +157,7 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
                   <div className="absolute inset-x-6 bottom-4 top-24 rounded-[2rem] bg-black/48 blur-3xl" />
                   <Link
                     href="/shop"
-                    className="group relative block overflow-hidden rounded-[2rem] border border-white/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-3 shadow-halo"
+                    className="group relative block overflow-hidden rounded-[2rem] border border-white/15 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))] p-3 shadow-halo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]"
                     aria-label={`Open ${finishes[finish].label} details`}
                   >
                     <div className="pointer-events-none absolute inset-x-8 top-0 h-20 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_68%)] opacity-60" />

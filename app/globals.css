@@ -49,6 +49,16 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: none;
+}
+
 a {
   text-decoration: none;
 }
@@ -89,6 +99,7 @@ a {
 
 .prose-rich {
   max-width: 74ch;
+  font-size: 1.03rem;
 }
 
 .prose-rich h2 {
@@ -102,7 +113,8 @@ a {
 .prose-rich p {
   margin-top: 1.1rem;
   color: rgba(244, 236, 226, 0.78);
-  line-height: 2;
+  line-height: 1.95;
+  font-size: clamp(1rem, 0.18vw + 0.96rem, 1.08rem);
 }
 
 .prose-rich strong {

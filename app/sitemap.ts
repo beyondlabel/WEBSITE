@@ -10,6 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/articles/meaningful-gifts-for-adopted-sons",
     "/articles/how-to-thank-a-special-education-teacher",
     "/articles/why-keepsake-jewelry-works-for-big-emotions",
+    "/articles/importance-of-gifts-that-carry-meaning",
+    "/articles/best-necklace-gift-for-moms-and-caregivers",
+    "/articles/what-makes-a-jewelry-gift-high-converting-online",
     "/about",
     "/privacy",
     "/terms"

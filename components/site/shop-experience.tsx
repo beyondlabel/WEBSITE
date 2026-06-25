@@ -76,11 +76,12 @@ export function ShopExperience() {
                   type="button"
                   onClick={() => setFinish(key)}
                   className={cn(
-                    "rounded-[1.4rem] border p-4 text-left transition-all duration-300",
+                    "block w-full rounded-[1.4rem] border p-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09070f]",
                     finish === key
                       ? finishStyles[key]
                       : "border-white/10 bg-white/[0.04] text-foreground/72 hover:border-white/25 hover:text-white"
                   )}
+                  aria-pressed={finish === key}
                 >
                   <div className="flex gap-4">
                     <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
@@ -154,7 +155,7 @@ export function ShopExperience() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${activeFinish.label} purchase page`}
-                className="group block"
+                className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09070f]"
               >
                 <BondAnimation />
                 <Image
@@ -196,11 +197,12 @@ export function ShopExperience() {
                   type="button"
                   onClick={() => setSelectedImage(image)}
                   className={cn(
-                    "overflow-hidden rounded-[1.1rem] border bg-white/[0.04] transition-all duration-300",
+                    "block w-full overflow-hidden rounded-[1.1rem] border bg-white/[0.04] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09070f]",
                     selectedImage === image
                       ? "border-gold/45 shadow-[0_0_0_1px_rgba(228,194,129,0.28)]"
                       : "border-white/10 hover:border-white/20"
                   )}
+                  aria-pressed={selectedImage === image}
                 >
                   <div className="relative">
                     <Image
@@ -210,7 +212,7 @@ export function ShopExperience() {
                       height={400}
                       className="h-auto w-full object-cover"
                     />
-                    <span className="absolute bottom-1 left-1 rounded-full bg-black/70 px-2 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/80">
+                    <span className="pointer-events-none absolute bottom-1 left-1 rounded-full bg-black/70 px-2 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/80">
                       View
                     </span>
                   </div>
