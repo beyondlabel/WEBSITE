@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 
   return {
-    title: `${article.title} | Beyond Label Gifts`,
+    title: `${article.title} | Beyond Labels Gifts`,
     description: article.intro,
     openGraph: {
-      title: `${article.title} | Beyond Label Gifts`,
+      title: `${article.title} | Beyond Labels Gifts`,
       description: article.intro,
       type: "article",
       url: `https://beyondlabelgifts.com/articles/${slug}`
@@ -55,7 +55,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               description: article.intro,
               publisher: {
                 "@type": "Organization",
-                name: "Beyond Label Gifts",
+                name: "Beyond Labels Gifts",
                 url: "https://beyondlabelgifts.com"
               },
               mainEntityOfPage: `https://beyondlabelgifts.com/articles/${slug}`
@@ -67,7 +67,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           Back to articles
         </Link>
         <article className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 sm:p-12">
-          <p className="text-sm uppercase tracking-[0.3em] text-lavender/78">Beyond Label Journal</p>
+          <p className="text-sm uppercase tracking-[0.3em] text-lavender/78">Beyond Labels Journal</p>
           <h1 className="mt-5 max-w-3xl font-display text-4xl leading-tight text-white sm:text-6xl">
             {article.title}
           </h1>

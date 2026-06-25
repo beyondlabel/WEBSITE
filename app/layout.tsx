@@ -4,15 +4,15 @@ import "./globals.css"
 import { SiteNavbar } from "@/components/site/site-navbar"
 import { SiteFooter } from "@/components/site/footer"
 
-const title = "Beyond Label Gifts | Every Story. Beyond Label."
+const title = "Beyond Labels Gifts | Meaningful Jewelry Gifts"
 const description =
-  "Shop the Eternal Hope Necklace in silver or gold. A meaningful keepsake necklace designed to represent love, gratitude, bond, and lasting appreciation."
+  "Beyond Labels Gifts creates meaningful keepsake necklaces in silver or gold that represent love, gratitude, bond, and lasting appreciation."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://beyondlabelgifts.com"),
   title,
   description,
-  applicationName: "Beyond Label Gifts",
+  applicationName: "Beyond Labels Gifts",
   keywords: [
     "meaningful gift necklace",
     "eternal hope necklace",
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    siteName: "Beyond Label Gifts",
+    siteName: "Beyond Labels Gifts",
     images: [
       {
         url: "/brand/og-logo.png",
         width: 1536,
         height: 1024,
-        alt: "Beyond Label Gifts logo"
+        alt: "Beyond Labels Gifts logo"
       }
     ]
   },
@@ -63,10 +63,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Beyond Label Gifts",
+              name: "Beyond Labels Gifts",
               url: "https://beyondlabelgifts.com",
               description,
-              slogan: "Every Story. Beyond Label.",
+              slogan: "Every Story. Beyond Labels.",
               sameAs: ["https://instagram.com/beyondlabelgifts"]
             })
           }}

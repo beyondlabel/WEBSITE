@@ -6,13 +6,13 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Terms"
         title="Terms and Conditions"
-        body="Core launch-stage terms for using the Beyond Label Gifts website."
+        body="Core launch-stage terms for using the Beyond Labels Gifts website."
       />
       <section className="px-6 pb-16">
         <div className="prose-rich mx-auto rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 sm:p-12">
           <p>
             By using this website, you agree to use it lawfully and respectfully. All site copy,
-            branding, artwork, and product presentation are the property of Beyond Label Gifts
+            branding, artwork, and product presentation are the property of Beyond Labels Gifts
             unless otherwise noted.
           </p>
           <p>
@@ -21,7 +21,7 @@ export default function TermsPage() {
             to Etsy&apos;s platform terms, policies, and transaction protections.
           </p>
           <p>
-            Beyond Label Gifts provides this website for informational and shopping purposes. We
+            Beyond Labels Gifts provides this website for informational and shopping purposes. We
             are not responsible for interruptions caused by third-party services, temporary launch
             changes, or content updates in progress.
           </p>

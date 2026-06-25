@@ -16,19 +16,19 @@ import {
 } from "@/data/site"
 
 export const metadata: Metadata = {
-  title: "Beyond Label Gifts | Meaningful Necklace Gifts That Represent Love and Gratitude",
+  title: "Beyond Labels Gifts | Meaningful Necklace Gifts",
   description:
-    "Discover the Eternal Hope Necklace, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
+    "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
   openGraph: {
-    title: "Beyond Label Gifts | Meaningful Necklace Gifts That Represent Love and Gratitude",
+    title: "Beyond Labels Gifts | Meaningful Necklace Gifts",
     description:
-      "Discover the Eternal Hope Necklace, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
+      "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
     images: [
       {
         url: "/brand/og-logo.png",
         width: 1536,
         height: 1024,
-        alt: "Beyond Label Gifts logo"
+        alt: "Beyond Labels Gifts logo"
       }
     ]
   }
@@ -294,10 +294,10 @@ export default function HomePage() {
             <div className="relative z-10 space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.28em] text-white/74">
                 <ScrollText className="h-4 w-4 text-lavender" />
-                Beyond Label Gifts
+                Beyond Labels Gifts
               </div>
               <h3 className="max-w-xl font-display text-4xl leading-tight text-white">
-                Every story. Beyond label. Every gift. Made with purpose.
+                Every story. Beyond labels. Every gift. Made with purpose.
               </h3>
               <p className="max-w-2xl text-base leading-8 text-foreground/76">
                 This positioning is what creates trust. No hype. No overcrowded catalog. Just one

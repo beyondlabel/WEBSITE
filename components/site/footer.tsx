@@ -8,10 +8,10 @@ export function SiteFooter() {
         <div className="space-y-6">
           <div className="inline-flex items-center gap-3 rounded-full border border-gold/25 bg-white/5 px-4 py-2 text-sm text-foreground/78">
             <Sparkles className="h-4 w-4 text-gold" />
-            Every story. Beyond label.
+            Every story. Beyond labels.
           </div>
           <h2 className="max-w-2xl font-display text-4xl leading-tight text-white">
-            Beyond Label Gifts turns a necklace into a reminder someone can keep close.
+            Beyond Labels Gifts turns a necklace into a reminder someone can keep close.
           </h2>
           <p className="max-w-2xl text-base leading-8 text-foreground/74">
             One signature keepsake. Two timeless finishes. Crafted to help the right person feel

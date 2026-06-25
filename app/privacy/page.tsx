@@ -6,12 +6,12 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Privacy"
         title="Privacy Policy"
-        body="A simple launch-stage privacy policy for Beyond Label Gifts."
+        body="A simple launch-stage privacy policy for Beyond Labels Gifts."
       />
       <section className="px-6 pb-16">
         <div className="prose-rich mx-auto rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 sm:p-12">
           <p>
-            Beyond Label Gifts respects your privacy. This launch-stage website may collect basic
+            Beyond Labels Gifts respects your privacy. This launch-stage website may collect basic
             information you choose to submit, such as email inquiries, and standard analytics data
             used to understand how visitors use the site.
           </p>

@@ -9,7 +9,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="Our story"
         title="A brand built for the people who love deeply and show up fully."
-        body="Beyond Label Gifts exists to celebrate relationships that deserve more than a generic gift and more than a label."
+        body="Beyond Labels Gifts exists to celebrate relationships that deserve more than a generic gift and more than a label."
       />
 
       <section className="px-6 pb-14">
@@ -18,7 +18,7 @@ export default function AboutPage() {
             <Link href="/shop" className="block" aria-label="Shop the Eternal Hope Necklace">
               <Image
                 src="/brand/back-logo.png"
-                alt="Beyond Label Gifts artwork"
+                alt="Beyond Labels Gifts artwork"
                 width={1254}
                 height={1254}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
@@ -32,7 +32,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-5 text-base leading-8 text-foreground/74">
               <p>
-                Beyond Label Gifts was imagined as a keepsake brand for extraordinary families,
+                Beyond Labels Gifts was imagined as a keepsake brand for extraordinary families,
                 caregivers, teachers, therapists, and loved ones whose impact cannot be captured
                 by a casual gift.
               </p>

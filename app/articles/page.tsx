@@ -9,7 +9,7 @@ export default function ArticlesPage() {
       <PageHero
         eyebrow="Journal"
         title="Articles that help shoppers choose with more confidence and heart."
-        body="Beyond Label Gifts is building an article library around meaningful gifting, appreciation language, and relationship-first keepsakes."
+        body="Beyond Labels Gifts is building an article library around meaningful gifting, appreciation language, and relationship-first keepsakes."
         cta={{ href: "/shop", label: "Shop the flagship gift" }}
       />
 
