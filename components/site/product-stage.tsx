@@ -11,6 +11,7 @@ const finishes = {
   gold: {
     label: "Gold finish",
     note: "Warm, radiant, and made for the person whose love deserves a brighter spotlight.",
+    summary: "Warm, radiant, celebratory",
     image: productImages.gold[0],
     alt: "Gold Eternal Hope Necklace beside a luxury wood gift box",
     thumb: productImages.gold[5]
@@ -18,6 +19,7 @@ const finishes = {
   silver: {
     label: "Silver finish",
     note: "Clean, brilliant, and perfect for a message meant to stay close every day.",
+    summary: "Clean, bright, everyday elegance",
     image: productImages.silver[0],
     alt: "Silver Eternal Hope Necklace beside a luxury wood gift box",
     thumb: productImages.silver[4]
@@ -48,16 +50,16 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
             "radial-gradient(circle at 16% 12%, rgba(236, 212, 153, 0.16), transparent 22%), radial-gradient(circle at 86% 16%, rgba(168, 101, 255, 0.12), transparent 24%), linear-gradient(180deg, rgba(19, 15, 29, 0.97), rgba(12, 10, 18, 0.94))"
         }}
       >
-        <div className="grid gap-7 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
           <div className="relative order-2 z-10 space-y-5 lg:order-1">
-            <div className="inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-black/28 px-4 py-3">
-              <div className="relative h-14 w-14 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
+            <div className="inline-flex items-center gap-4 rounded-[1.2rem] border border-white/10 bg-black/28 px-5 py-4">
+              <div className="relative h-16 w-16 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
                 <Image
                   src={activeFinish.thumb}
                   alt={`${activeFinish.label} necklace detail`}
                   fill
                   className="object-cover object-center"
-                  sizes="56px"
+                  sizes="64px"
                 />
               </div>
               <div className="min-w-0">
@@ -82,34 +84,36 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
               <p className="max-w-lg text-sm leading-7 text-foreground/72">{activeFinish.note}</p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3">
               {(Object.keys(finishes) as FinishKey[]).map((item) => (
                 <button
                   key={item}
                   type="button"
                   onClick={() => setFinish(item)}
                   className={cn(
-                    "block w-full rounded-[1.4rem] border p-3 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]",
+                    "block w-full rounded-[1.4rem] border px-4 py-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]",
                     finish === item
                       ? "border-gold/45 bg-gold/10 text-white"
                       : "border-white/10 bg-white/5 text-foreground/72 hover:border-lavender/45 hover:bg-lavender/5"
                   )}
                   aria-pressed={finish === item}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="relative h-14 w-14 overflow-hidden rounded-[0.9rem] border border-white/10 bg-white/5">
+                  <div className="grid items-center gap-4 sm:grid-cols-[5.25rem_1fr]">
+                    <div className="relative h-20 w-20 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
                       <Image
                         src={finishes[item].thumb}
                         alt={`${finishes[item].label} necklace finish preview`}
                         fill
                         className="object-cover object-center"
-                        sizes="56px"
+                        sizes="80px"
                       />
                     </div>
                     <div className="min-w-0">
-                      <span className="block text-sm font-semibold text-white">{finishes[item].label}</span>
-                      <span className="mt-1 block text-xs leading-6 text-foreground/64">
-                        {finishes[item].note}
+                      <span className="block text-xl font-semibold text-white">
+                        {finishes[item].label}
+                      </span>
+                      <span className="mt-2 block text-sm leading-6 text-foreground/72">
+                        {finishes[item].summary}
                       </span>
                     </div>
                   </div>
@@ -172,21 +176,21 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
 
                 <div className="grid gap-2 sm:grid-cols-3">
                   <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium">
+                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
                       <Gift className="h-4 w-4 text-gold" />
-                      Ready to gift
+                      Gift-ready
                     </span>
                   </div>
                   <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium">
+                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
                       <Sparkles className="h-4 w-4 text-lavender" />
-                      Two finishes
+                      2 finishes
                     </span>
                   </div>
                   <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium">
+                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
                       <CheckCircle2 className="h-4 w-4 text-gold" />
-                      Message card included
+                      Card included
                     </span>
                   </div>
                 </div>
