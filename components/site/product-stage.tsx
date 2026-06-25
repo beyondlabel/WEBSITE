@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle2, Gift, ShieldCheck, Sparkles } from "lucide-react"
 import { productImages } from "@/data/site"
 import { cn } from "@/lib/utils"
@@ -34,51 +33,63 @@ interface ProductStageProps {
 
 export function ProductStage({ className, compact = false }: ProductStageProps) {
   const [finish, setFinish] = useState<FinishKey>("gold")
+  const activeFinish = finishes[finish]
 
   return (
     <div className={cn("relative", className)}>
-      <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2rem] bg-glow blur-2xl" />
+      <div className="pointer-events-none absolute inset-0 -z-10 rounded-[2rem] bg-gold/10 blur-3xl" />
       <div
         className={cn(
-          "relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#130f1d]/85 p-4 shadow-velvet backdrop-blur-sm sm:p-6 lg:p-7",
+          "relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#130f1d]/88 p-4 shadow-velvet backdrop-blur-sm sm:p-6 lg:p-7",
           compact && "rounded-[1.75rem]"
         )}
         style={{
           backgroundImage:
-            "radial-gradient(circle at 18% 18%, rgba(236, 212, 153, 0.18), transparent 22%), radial-gradient(circle at 82% 22%, rgba(168, 101, 255, 0.12), transparent 24%), linear-gradient(180deg, rgba(19, 15, 29, 0.96), rgba(12, 10, 18, 0.92))"
+            "radial-gradient(circle at 16% 12%, rgba(236, 212, 153, 0.16), transparent 22%), radial-gradient(circle at 86% 16%, rgba(168, 101, 255, 0.12), transparent 24%), linear-gradient(180deg, rgba(19, 15, 29, 0.97), rgba(12, 10, 18, 0.94))"
         }}
       >
-        <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
-          <div className="relative z-10 space-y-5">
-            <div className="flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-black/28 p-3">
+        <div className="grid gap-7 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <div className="relative order-2 z-10 space-y-5 lg:order-1">
+            <div className="inline-flex items-center gap-3 rounded-[1.2rem] border border-white/10 bg-black/28 px-4 py-3">
               <div className="relative h-14 w-14 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
                 <Image
-                  src={finishes[finish].image}
-                  alt={finishes[finish].alt}
+                  src={activeFinish.thumb}
+                  alt={`${activeFinish.label} necklace detail`}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="56px"
                 />
               </div>
               <div className="min-w-0">
-                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-gold/80">Eternal Hope Necklace</p>
-                <p className="mt-1 text-sm text-foreground/72">A keepsake that turns gratitude into something wearable.</p>
+                <p className="text-[0.68rem] uppercase tracking-[0.28em] text-gold/80">
+                  Eternal Hope Necklace
+                </p>
+                <p className="mt-1 text-sm text-foreground/72">
+                  A keepsake that turns gratitude into something wearable.
+                </p>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <p className="font-display text-3xl text-white">{finishes[finish].label}</p>
-              <p className="text-sm leading-7 text-foreground/70">{finishes[finish].note}</p>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm uppercase tracking-[0.24em] text-lavender/74">
+                  Choose your finish
+                </p>
+                <p className="font-display text-4xl leading-tight text-white">
+                  {activeFinish.label}
+                </p>
+              </div>
+              <p className="max-w-lg text-sm leading-7 text-foreground/72">{activeFinish.note}</p>
             </div>
 
-            <div className="grid gap-3">
+            <div className="grid gap-3 sm:grid-cols-2">
               {(Object.keys(finishes) as FinishKey[]).map((item) => (
                 <button
                   key={item}
                   type="button"
                   onClick={() => setFinish(item)}
                   className={cn(
-                    "block w-full rounded-2xl border p-3 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]",
+                    "block w-full rounded-[1.4rem] border p-3 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#130f1d]",
                     finish === item
                       ? "border-gold/45 bg-gold/10 text-white"
                       : "border-white/10 bg-white/5 text-foreground/72 hover:border-lavender/45 hover:bg-lavender/5"
@@ -91,20 +102,22 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
                         src={finishes[item].thumb}
                         alt={`${finishes[item].label} necklace finish preview`}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                         sizes="56px"
                       />
                     </div>
                     <div className="min-w-0">
                       <span className="block text-sm font-semibold text-white">{finishes[item].label}</span>
-                      <span className="mt-1 block text-xs text-foreground/64">{finishes[item].note}</span>
+                      <span className="mt-1 block text-xs leading-6 text-foreground/64">
+                        {finishes[item].note}
+                      </span>
                     </div>
                   </div>
                 </button>
               ))}
             </div>
 
-            <div className="grid gap-2 text-sm text-foreground/70">
+            <div className="grid gap-2 text-sm text-foreground/74">
               <span className="inline-flex items-center gap-2">
                 <Gift className="h-4 w-4 text-gold" />
                 Premium message-card presentation
@@ -138,31 +151,44 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
             ) : null}
           </div>
 
-          <div className="relative flex min-h-[420px] items-center justify-center px-2 py-8 sm:min-h-[520px]">
-            <div className="absolute inset-x-6 top-8 h-24 rounded-full bg-gold/12 blur-3xl" />
-            <div className="absolute inset-x-10 bottom-6 h-28 rounded-full bg-lavender/10 blur-3xl" />
-
-            <div className="relative z-10 w-full max-w-[430px] space-y-4">
-              <NecklaceShowcase finish={finish} />
-
-              <div className="grid gap-2 rounded-[1.6rem] border border-white/10 bg-black/24 p-3 text-sm text-white/84 sm:grid-cols-3">
-                <div className="rounded-[1.1rem] bg-white/5 px-3 py-3">
-                  <span className="inline-flex items-center gap-2 font-medium">
-                    <Gift className="h-4 w-4 text-gold" />
-                    Ready to gift
-                  </span>
+          <div className="relative order-1 lg:order-2">
+            <div className="absolute inset-x-10 top-10 h-24 rounded-full bg-gold/12 blur-3xl" />
+            <div className="absolute inset-x-16 bottom-10 h-28 rounded-full bg-lavender/10 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[1.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-4 sm:p-5">
+              <div className="grid gap-4">
+                <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0d0914] p-4 sm:p-5">
+                  <div className="absolute inset-x-12 top-5 h-20 rounded-full bg-gold/10 blur-3xl" />
+                  <div className="relative aspect-[4/4.3] overflow-hidden rounded-[1.15rem]">
+                    <Image
+                      src={activeFinish.image}
+                      alt={activeFinish.alt}
+                      fill
+                      priority
+                      className="object-contain object-center"
+                      sizes="(min-width: 1024px) 40vw, 88vw"
+                    />
+                  </div>
                 </div>
-                <div className="rounded-[1.1rem] bg-white/5 px-3 py-3">
-                  <span className="inline-flex items-center gap-2 font-medium">
-                    <Sparkles className="h-4 w-4 text-lavender" />
-                    2 polished finishes
-                  </span>
-                </div>
-                <div className="rounded-[1.1rem] bg-white/5 px-3 py-3">
-                  <span className="inline-flex items-center gap-2 font-medium">
-                    <CheckCircle2 className="h-4 w-4 text-gold" />
-                    Message card included
-                  </span>
+
+                <div className="grid gap-2 sm:grid-cols-3">
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
+                    <span className="inline-flex items-center gap-2 font-medium">
+                      <Gift className="h-4 w-4 text-gold" />
+                      Ready to gift
+                    </span>
+                  </div>
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
+                    <span className="inline-flex items-center gap-2 font-medium">
+                      <Sparkles className="h-4 w-4 text-lavender" />
+                      Two finishes
+                    </span>
+                  </div>
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
+                    <span className="inline-flex items-center gap-2 font-medium">
+                      <CheckCircle2 className="h-4 w-4 text-gold" />
+                      Message card included
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -170,74 +196,5 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
         </div>
       </div>
     </div>
-  )
-}
-
-function NecklaceShowcase({ finish }: { finish: FinishKey }) {
-  const pendantStroke = finish === "gold" ? "rgba(244, 214, 152, 0.92)" : "rgba(220, 229, 255, 0.92)"
-  const pendantGlow = finish === "gold" ? "rgba(244, 214, 152, 0.28)" : "rgba(191, 204, 255, 0.24)"
-
-  return (
-    <motion.div
-      className="pointer-events-none absolute inset-x-8 top-0 z-0"
-      animate={{ y: [0, -4, 0], rotate: [0, 0.7, 0, -0.7, 0] }}
-      transition={{ duration: 7.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-      aria-hidden="true"
-    >
-      <svg viewBox="0 0 420 220" className="h-auto w-full overflow-visible">
-        <defs>
-          <filter id="pendant-blur">
-            <feGaussianBlur stdDeviation="10" />
-          </filter>
-          <linearGradient id="chain-stroke" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.26)" />
-            <stop offset="45%" stopColor="rgba(244,214,152,0.66)" />
-            <stop offset="100%" stopColor="rgba(178,122,255,0.36)" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M78 34C116 24 165 38 192 92"
-          fill="none"
-          stroke="url(#chain-stroke)"
-          strokeLinecap="round"
-          strokeWidth="2"
-        />
-        <path
-          d="M342 34C304 24 255 38 228 92"
-          fill="none"
-          stroke="url(#chain-stroke)"
-          strokeLinecap="round"
-          strokeWidth="2"
-        />
-        <path
-          d="M192 92C198 111 202 130 205 150"
-          fill="none"
-          stroke="url(#chain-stroke)"
-          strokeLinecap="round"
-          strokeWidth="1.8"
-        />
-        <path
-          d="M228 92C222 111 218 130 215 150"
-          fill="none"
-          stroke="url(#chain-stroke)"
-          strokeLinecap="round"
-          strokeWidth="1.8"
-        />
-        <ellipse cx="210" cy="162" rx="44" ry="17" fill={pendantGlow} filter="url(#pendant-blur)" />
-        <path
-          d="M210 124C226 124 239 136 239 151C239 170 223 183 210 194C197 183 181 170 181 151C181 136 194 124 210 124Z"
-          fill="rgba(18,13,29,0.78)"
-          stroke={pendantStroke}
-          strokeWidth="2.4"
-        />
-        <path
-          d="M210 135C220 135 228 143 228 153C228 166 217 175 210 182C203 175 192 166 192 153C192 143 200 135 210 135Z"
-          fill="none"
-          stroke="rgba(255,255,255,0.28)"
-          strokeWidth="1.4"
-        />
-        <circle cx="210" cy="120" r="4.5" fill={pendantStroke} />
-      </svg>
-    </motion.div>
   )
 }

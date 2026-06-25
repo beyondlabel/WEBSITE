@@ -38,62 +38,70 @@ export default function HomePage() {
   return (
     <div className="relative z-10">
       <section className="px-6 pb-16 pt-28 sm:pt-36">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <p className="text-sm uppercase tracking-[0.34em] text-gold/82">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.05] px-5 py-2 text-sm text-white/82">
+                <span className="h-2 w-2 rounded-full bg-gold" />
                 Meaningful jewelry gifts for people who changed everything
-              </p>
-              <h1 className="max-w-4xl font-display text-5xl leading-[0.93] text-white text-balance sm:text-6xl lg:text-[5.8rem]">
-                More than a necklace. A reminder they&apos;ll carry every day.
-              </h1>
-              <p className="max-w-3xl text-base leading-8 text-foreground/76 sm:text-lg">
-                The biggest mistake most stores make is thinking they are selling jewelry. Beyond
-                Labels Gifts is built around something deeper: recognition, gratitude, and words
-                someone has struggled to say out loud.
-              </p>
-              <div className="flex flex-wrap gap-2 text-sm text-white/82">
-                <span className="inline-flex items-center gap-2 rounded-full border border-gold/20 bg-gold/10 px-4 py-2">
+              </div>
+
+              <div className="space-y-6">
+                <h1 className="max-w-4xl font-display text-[clamp(3.5rem,7vw,6.1rem)] leading-[0.94] tracking-[-0.03em] text-white text-balance">
+                  A keepsake they can wear. A message they will never forget.
+                </h1>
+                <p className="max-w-2xl text-lg leading-8 text-foreground/78 text-pretty">
+                  Beyond Labels Gifts is not about browsing a catalog. It is about finding one
+                  keepsake that makes love, gratitude, and recognition feel unmistakably real the
+                  moment the box opens.
+                </p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                {signatureHighlights.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[1.35rem] border border-white/10 bg-white/[0.04] px-5 py-4"
+                  >
+                    <p className="text-sm leading-7 text-foreground/74">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+                >
+                  Shop now
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="mailto:hello@beyondlabelgifts.com"
+                  className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:border-lavender/45 hover:text-lavender"
+                >
+                  Contact us
+                </Link>
+              </div>
+
+              <div className="grid gap-3 text-sm text-white/82 sm:grid-cols-3">
+                <span className="inline-flex items-center gap-2 rounded-[1.1rem] border border-gold/18 bg-gold/8 px-4 py-3">
                   <Gift className="h-4 w-4 text-gold" />
                   Gift-ready presentation
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2">
+                <span className="inline-flex items-center gap-2 rounded-[1.1rem] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <CheckCircle2 className="h-4 w-4 text-lavender" />
                   Gold or silver finish
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2">
+                <span className="inline-flex items-center gap-2 rounded-[1.1rem] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <Heart className="h-4 w-4 text-gold" />
                   Built for meaningful moments
                 </span>
               </div>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {signatureHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1.6rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-5"
-                >
-                  <p className="text-sm leading-7 text-foreground/74">{item}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                Shop now
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="mailto:hello@beyondlabelgifts.com"
-                className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:border-lavender/45 hover:text-lavender"
-              >
-                Contact us
-              </Link>
-            </div>
+
+            <ProductStage />
           </div>
-          <ProductStage />
         </div>
       </section>
 
@@ -119,7 +127,7 @@ export default function HomePage() {
                     alt="Silver Eternal Hope Necklace presented inside an open premium gift box"
                     width={1000}
                     height={1000}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
                 <div className="grid gap-4">
@@ -171,7 +179,7 @@ export default function HomePage() {
                 alt="Silver Eternal Hope Necklace displayed in an open luxury gift box on a wooden surface"
                 width={1000}
                 height={1000}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover object-center"
               />
             </div>
           </div>
@@ -191,7 +199,7 @@ export default function HomePage() {
                 alt="Gold Eternal Hope Necklace displayed inside an open premium gift box"
                 width={1000}
                 height={1000}
-                className="h-auto w-full object-cover"
+                className="h-auto w-full object-cover object-center"
               />
             </div>
             <div className="space-y-4 text-base leading-8 text-foreground/72">
@@ -248,7 +256,7 @@ export default function HomePage() {
                 alt="Gold Eternal Hope Necklace close-up beside a luxury wood gift box"
                 width={1000}
                 height={1000}
-                className="h-auto w-full object-cover"
+                className="h-auto w-full object-cover object-center"
               />
             </div>
             {symbolicPoints.map((item, index) => (

@@ -21,7 +21,7 @@ export default function AboutPage() {
                 alt="Beyond Labels Gifts artwork"
                 width={1254}
                 height={1254}
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
+                className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-[1.01]"
               />
             </Link>
           </div>

@@ -45,7 +45,7 @@ export function ShopExperience() {
                   src={activeFinish.heroImage}
                   alt={activeFinish.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   sizes="56px"
                 />
               </div>
@@ -89,7 +89,7 @@ export function ShopExperience() {
                         src={signatureProduct.finishes[key].heroImage}
                         alt={signatureProduct.finishes[key].alt}
                         fill
-                        className="object-cover"
+                        className="object-cover object-center"
                         sizes="80px"
                       />
                     </div>
@@ -163,7 +163,7 @@ export function ShopExperience() {
                   alt={activeFinish.alt}
                   width={1200}
                   height={1200}
-                  className="relative z-10 h-auto w-full rounded-[1.5rem] object-cover transition-transform duration-500 group-hover:scale-[1.01]"
+                  className="relative z-10 h-auto w-full rounded-[1.5rem] object-cover object-center transition-transform duration-500 group-hover:scale-[1.01]"
                   priority
                 />
               </Link>
@@ -176,7 +176,7 @@ export function ShopExperience() {
                   alt="Necklace dimensions and adjustable cable chain measurements"
                   width={768}
                   height={768}
-                  className="h-auto w-full object-cover"
+                  className="h-auto w-full object-cover object-center"
                 />
               </div>
               <div className="space-y-3">
@@ -210,7 +210,7 @@ export function ShopExperience() {
                       alt={`${activeFinish.label} Eternal Hope Necklace preview`}
                       width={400}
                       height={400}
-                      className="h-auto w-full object-cover"
+                      className="h-auto w-full object-cover object-center"
                     />
                     <span className="pointer-events-none absolute bottom-1 left-1 rounded-full bg-black/70 px-2 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/80">
                       View
