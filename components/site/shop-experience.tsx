@@ -168,6 +168,27 @@ export function ShopExperience() {
               </Link>
             </div>
 
+            <div className="grid gap-4 rounded-[1.8rem] border border-white/10 bg-black/18 p-4 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div className="overflow-hidden rounded-[1.3rem] border border-white/10 bg-white/90 p-2">
+                <Image
+                  src="/product-info/dimension.png"
+                  alt="Necklace dimensions and adjustable cable chain measurements"
+                  width={768}
+                  height={768}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+              <div className="space-y-3">
+                <p className="text-sm uppercase tracking-[0.26em] text-gold/78">Dimensions</p>
+                <h2 className="font-display text-2xl text-white">Sized to feel elegant on everyday wear.</h2>
+                <div className="grid gap-2 text-sm leading-7 text-foreground/74">
+                  <p>Adjustable cable chain: 18" to 22"</p>
+                  <p>Pendant width and height: 0.62" (15.7mm)</p>
+                  <p>Center stone: 6mm cubic zirconia</p>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
               {shopGallery[finish].map((image) => (
                 <button
@@ -181,13 +202,18 @@ export function ShopExperience() {
                       : "border-white/10 hover:border-white/20"
                   )}
                 >
-                  <Image
-                    src={image}
-                    alt={`${activeFinish.label} Eternal Hope Necklace preview`}
-                    width={400}
-                    height={400}
-                    className="h-auto w-full object-cover"
-                  />
+                  <div className="relative">
+                    <Image
+                      src={image}
+                      alt={`${activeFinish.label} Eternal Hope Necklace preview`}
+                      width={400}
+                      height={400}
+                      className="h-auto w-full object-cover"
+                    />
+                    <span className="absolute bottom-1 left-1 rounded-full bg-black/70 px-2 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/80">
+                      View
+                    </span>
+                  </div>
                 </button>
               ))}
             </div>
