@@ -39,7 +39,7 @@ export default function HomePage() {
     <div className="relative z-10">
       <section className="px-6 pb-16 pt-28 sm:pt-36">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="grid gap-12 xl:grid-cols-[0.9fr_1.1fr] xl:items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.05] px-5 py-2 text-sm text-white/82">
                 <span className="h-2 w-2 rounded-full bg-gold" />

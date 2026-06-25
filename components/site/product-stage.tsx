@@ -50,7 +50,7 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
             "radial-gradient(circle at 16% 12%, rgba(236, 212, 153, 0.16), transparent 22%), radial-gradient(circle at 86% 16%, rgba(168, 101, 255, 0.12), transparent 24%), linear-gradient(180deg, rgba(19, 15, 29, 0.97), rgba(12, 10, 18, 0.94))"
         }}
       >
-        <div className="grid gap-8 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
+        <div className="grid gap-8 xl:grid-cols-[1.06fr_0.94fr] xl:items-center">
           <div className="relative order-2 z-10 space-y-5 lg:order-1">
             <div className="inline-flex items-center gap-4 rounded-[1.2rem] border border-white/10 bg-black/28 px-5 py-4">
               <div className="relative h-16 w-16 overflow-hidden rounded-[1rem] border border-white/10 bg-white/5">
@@ -155,7 +155,7 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
             ) : null}
           </div>
 
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 xl:order-2">
             <div className="absolute inset-x-10 top-10 h-24 rounded-full bg-gold/12 blur-3xl" />
             <div className="absolute inset-x-16 bottom-10 h-28 rounded-full bg-lavender/10 blur-3xl" />
             <div className="relative overflow-hidden rounded-[1.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-4 sm:p-5">
@@ -174,21 +174,21 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
                   </div>
                 </div>
 
-                <div className="grid gap-2 sm:grid-cols-3">
-                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
+                <div className="grid gap-2 min-[460px]:grid-cols-3">
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-3 py-4 text-sm text-white/84">
+                    <span className="flex items-center justify-center gap-2 text-center font-medium leading-tight">
                       <Gift className="h-4 w-4 text-gold" />
                       Gift-ready
                     </span>
                   </div>
-                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-3 py-4 text-sm text-white/84">
+                    <span className="flex items-center justify-center gap-2 text-center font-medium leading-tight">
                       <Sparkles className="h-4 w-4 text-lavender" />
                       2 finishes
                     </span>
                   </div>
-                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-4 py-4 text-sm text-white/84">
-                    <span className="inline-flex items-center gap-2 font-medium whitespace-nowrap">
+                  <div className="rounded-[1.15rem] border border-white/10 bg-black/22 px-3 py-4 text-sm text-white/84">
+                    <span className="flex items-center justify-center gap-2 text-center font-medium leading-tight">
                       <CheckCircle2 className="h-4 w-4 text-gold" />
                       Card included
                     </span>
