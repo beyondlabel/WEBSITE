@@ -3,7 +3,7 @@ import { ArrowUpRight, Heart, Instagram, Mail, Sparkles } from "lucide-react"
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-28 overflow-hidden border-t border-white/10 px-6 pb-28 pt-16 sm:pb-20">
+    <footer className="relative mt-28 overflow-hidden border-t border-white/10 px-6 pb-[calc(7.5rem+env(safe-area-inset-bottom))] pt-16 sm:pb-20">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-3 rounded-full border border-gold/25 bg-white/5 px-4 py-2 text-sm text-foreground/78">

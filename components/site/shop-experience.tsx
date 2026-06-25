@@ -315,7 +315,7 @@ export function ShopExperience() {
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#09070f]/92 px-4 py-3 backdrop-blur-xl sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#09070f]/92 px-4 pb-[calc(env(safe-area-inset-bottom)+0.875rem)] pt-3 shadow-[0_-16px_32px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:hidden">
         <div className="mx-auto flex max-w-xl items-center justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.26em] text-lavender/76">{activeFinish.label} finish</p>
