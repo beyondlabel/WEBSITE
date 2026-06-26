@@ -147,7 +147,7 @@ export function ShopExperience() {
               <button
                 type="button"
                 onClick={scrollToCheckout}
-                className="inline-flex min-h-12 items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Buy now
                 <ArrowRight className="h-4 w-4" />
@@ -565,7 +565,7 @@ export function ShopExperience() {
                     setShowPrompt(false)
                     scrollToCheckout()
                   }}
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
                 >
                   Buy now
                   <ArrowRight className="h-4 w-4" />
@@ -588,7 +588,7 @@ export function ShopExperience() {
             type="button"
             onClick={scrollToCheckout}
             aria-label="Buy now with secure checkout"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
           >
             Buy now
             <ArrowRight className="h-4 w-4" />
