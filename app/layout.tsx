@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site/footer"
 
 const title = "Beyond Labels Gifts | Meaningful Jewelry Gifts"
 const description =
-  "Beyond Labels Gifts creates meaningful keepsake necklaces in silver or gold that represent love, gratitude, bond, and lasting appreciation."
+  "Beyond Labels Gifts creates meaningful keepsake necklaces in yellow gold or white gold that represent love, gratitude, bond, and lasting appreciation."
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://beyondlabelgifts.com"),

@@ -10,6 +10,7 @@ import {
   emotionalReasons,
   symbolicPoints,
   promisePoints,
+  productImages,
   signatureHighlights,
   signatureProduct,
   storyMoments
@@ -18,11 +19,11 @@ import {
 export const metadata: Metadata = {
   title: "Beyond Labels Gifts | Meaningful Necklace Gifts",
   description:
-    "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
+    "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in yellow gold or white gold created to represent bond, appreciation, gratitude, and lasting love.",
   openGraph: {
     title: "Beyond Labels Gifts | Meaningful Necklace Gifts",
     description:
-      "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
+      "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in yellow gold or white gold created to represent bond, appreciation, gratitude, and lasting love.",
     images: [
       {
         url: "/brand/og-image.png",
@@ -91,7 +92,7 @@ export default function HomePage() {
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-[1.1rem] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <CheckCircle2 className="h-4 w-4 text-lavender" />
-                  Gold or silver finish
+                  Yellow gold or white gold finish
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-[1.1rem] border border-white/10 bg-white/[0.04] px-4 py-3">
                   <Heart className="h-4 w-4 text-gold" />
@@ -123,8 +124,8 @@ export default function HomePage() {
               <div className="grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
                 <div className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.045] shadow-[0_22px_60px_rgba(0,0,0,0.28)]">
                   <Image
-                    src="/products/silver/transformation-15021-ad21937d-9d7a-4d64-acff-38e11be8c776.png"
-                    alt="Silver Eternal Hope Necklace presented inside an open premium gift box"
+                    src={productImages.silver[6]}
+                    alt="14K white gold Eternal Hope Necklace presented inside an open premium gift box"
                     width={1000}
                     height={1000}
                     className="h-full w-full object-cover object-center"
@@ -175,8 +176,8 @@ export default function HomePage() {
             </div>
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045]">
               <Image
-                src="/products/silver/transformation-17533-49404a31-054a-4bc5-9baf-d84ea847cd52.png"
-                alt="Silver Eternal Hope Necklace displayed in an open luxury gift box on a wooden surface"
+                src={productImages.silver[7]}
+                alt="14K white gold Eternal Hope Necklace displayed in an open luxury gift box on a wooden surface"
                 width={1000}
                 height={1000}
                 className="h-full w-full object-cover object-center"
@@ -195,8 +196,8 @@ export default function HomePage() {
             </h2>
             <div className="relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.045]">
               <Image
-                src="/products/gold/transformation-12384-ffae0d79-789d-4caf-8745-11b04b6095bc.png"
-                alt="Gold Eternal Hope Necklace displayed inside an open premium gift box"
+                src={productImages.gold[4]}
+                alt="18K yellow gold Eternal Hope Necklace displayed inside an open premium gift box"
                 width={1000}
                 height={1000}
                 className="h-auto w-full object-cover object-center"
@@ -252,8 +253,8 @@ export default function HomePage() {
           <div className="grid gap-6">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.045]">
               <Image
-                src="/products/gold/2.jpg"
-                alt="Gold Eternal Hope Necklace close-up beside a luxury wood gift box"
+                src={productImages.gold[5]}
+                alt="18K yellow gold Eternal Hope Necklace close-up beside a luxury wood gift box"
                 width={1000}
                 height={1000}
                 className="h-auto w-full object-cover object-center"

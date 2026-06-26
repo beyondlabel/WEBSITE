@@ -9,20 +9,20 @@ import { cn } from "@/lib/utils"
 
 const finishes = {
   gold: {
-    label: "Gold finish",
+    label: "18K Yellow Gold finish",
     note: "Warm, radiant, and made for the person whose love deserves a brighter spotlight.",
     summary: "Warm, radiant, celebratory",
     image: productImages.gold[0],
-    alt: "Gold Eternal Hope Necklace beside a luxury wood gift box",
+    alt: "18K yellow gold Eternal Hope Necklace displayed over a heartfelt message card in a premium gift box",
     thumb: productImages.gold[5]
   },
   silver: {
-    label: "Silver finish",
+    label: "14K White Gold finish",
     note: "Clean, brilliant, and perfect for a message meant to stay close every day.",
-    summary: "Clean, bright, everyday elegance",
+    summary: "Clean, bright, silver-toned elegance",
     image: productImages.silver[0],
-    alt: "Silver Eternal Hope Necklace beside a luxury wood gift box",
-    thumb: productImages.silver[4]
+    alt: "14K white gold Eternal Hope Necklace displayed over a heartfelt message card in a premium gift box",
+    thumb: productImages.silver[5]
   }
 } as const
 
@@ -132,7 +132,7 @@ export function ProductStage({ className, compact = false }: ProductStageProps) 
               </span>
               <span className="inline-flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-gold" />
-                Gold and silver finishes ready to shop
+                Yellow gold and white gold finishes
               </span>
             </div>
 

@@ -42,6 +42,7 @@ export function ShopExperience() {
   const [showToast, setShowToast] = useState(false)
   const [showPrompt, setShowPrompt] = useState(false)
   const [cartCelebration, setCartCelebration] = useState(false)
+  const badgeImage = shopGallery[finish][5]
 
   useEffect(() => {
     setSelectedImage(shopGallery[finish][0])
@@ -110,11 +111,12 @@ export function ShopExperience() {
             <div className="inline-flex max-w-full items-center gap-3 rounded-[1rem] border border-white/10 bg-black/[0.26] p-2.5 pr-4">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[0.8rem] border border-white/10 bg-white/5">
                 <Image
-                  src={activeFinish.heroImage}
+                  src={badgeImage}
                   alt={activeFinish.alt}
                   fill
                   className="object-cover object-center"
                   sizes="56px"
+                  priority
                 />
               </div>
               <div className="min-w-0">
