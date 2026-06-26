@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     siteName: "Beyond Labels Gifts",
     images: [
       {
-        url: "/brand/og-logo.png",
-        width: 1536,
-        height: 1024,
+        url: "/brand/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Beyond Labels Gifts logo"
       }
     ]
@@ -41,11 +41,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/brand/og-logo.png"]
+    images: ["/brand/og-image.png"]
   },
   icons: {
-    icon: [{ url: "/brand/logo.png", type: "image/png" }],
-    apple: [{ url: "/brand/logo.png", type: "image/png" }]
+    icon: [{ url: "/icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-icon.png", type: "image/png" }]
   }
 }
 

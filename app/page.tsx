@@ -25,9 +25,9 @@ export const metadata: Metadata = {
       "Discover the Eternal Hope Necklace from Beyond Labels Gifts, a meaningful keepsake necklace in silver or gold created to represent bond, appreciation, gratitude, and lasting love.",
     images: [
       {
-        url: "/brand/og-logo.png",
-        width: 1536,
-        height: 1024,
+        url: "/brand/og-image.png",
+        width: 1200,
+        height: 630,
         alt: "Beyond Labels Gifts logo"
       }
     ]
