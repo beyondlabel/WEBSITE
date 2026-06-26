@@ -1,54 +1,55 @@
-export const purchaseLink =
-  "https://www.etsy.com/listing/4312327273/adopted-son-day-gift-necklace-to-our-son"
+export const shopifyBuyButton = {
+  domain: "pvbveg-kr.myshopify.com",
+  storefrontAccessToken: "1df53661f73f778142790f15542c7a73",
+  productId: "15084330811762",
+  componentId: "product-component-1782494909789"
+} as const
 
 export const productImages = {
   gold: [
-    "/products/gold/2.jpg",
-    "/products/gold/transformation-12018-41135b8d-41e1-4205-a068-3040004e6aad.png",
-    "/products/gold/transformation-12024-415ab4a3-a03c-43ed-bc63-8766b3aee8fd.png",
-    "/products/gold/transformation-12027-2856485c-78e5-4f16-a637-d496c42136d3.png",
-    "/products/gold/transformation-12382-c4f6029d-a9c4-4297-9161-35b59a6d3875.png",
-    "/products/gold/transformation-12384-ffae0d79-789d-4caf-8745-11b04b6095bc.png",
-    "/products/gold/transformation-12610-bc12f00a-d4f5-4d3f-8d6f-b269bb3a306b.png",
-    "/products/gold/transformation-15018-1fbf0fd2-9459-48e3-becb-3c63ce277ed0.png",
-    "/products/gold/transformation-17535-3fecc199-c2f5-4072-94c2-fe5ee78b5e68.png"
+    "/products/gold/eternal-hope-necklace-gold-message-card-closeup.png",
+    "/products/gold/eternal-hope-necklace-gold-open-gift-box-front.png",
+    "/products/gold/eternal-hope-necklace-gold-open-gift-box-angle.png",
+    "/products/gold/eternal-hope-necklace-gold-open-gift-box-lifestyle.png",
+    "/products/gold/eternal-hope-necklace-gold-gift-ready-display.png",
+    "/products/gold/eternal-hope-necklace-gold-jewelry-box-closeup.jpg",
+    "/products/gold/eternal-hope-necklace-gold-message-card-detail.png"
   ],
   silver: [
-    "/products/silver/1.jpg",
-    "/products/silver/transformation-12044-36c1879f-f11d-49d3-9532-e892d65070aa.png",
-    "/products/silver/transformation-12061-dadd7a16-e9b8-4a8d-aca2-ad56a462555b.png",
-    "/products/silver/transformation-14182-dcce01cf-01d3-4b07-8826-0181f8b68e99.png",
-    "/products/silver/transformation-15021-ad21937d-9d7a-4d64-acff-38e11be8c776.png",
-    "/products/silver/transformation-17224-6cb6b008-506e-4dff-9ef2-ef4269bfdd1e.png",
-    "/products/silver/transformation-17516-feae0958-bb5e-4c7d-b31f-2d3154523b32.png",
-    "/products/silver/transformation-17531-ecbd24d2-a8f2-40da-ad21-e83e27fc033c.png",
-    "/products/silver/transformation-17533-49404a31-054a-4bc5-9baf-d84ea847cd52.png"
+    "/products/silver/eternal-hope-necklace-silver-message-card-closeup.png",
+    "/products/silver/eternal-hope-necklace-silver-open-gift-box-front.png",
+    "/products/silver/eternal-hope-necklace-silver-open-gift-box-angle.png",
+    "/products/silver/eternal-hope-necklace-silver-open-gift-box-lifestyle.png",
+    "/products/silver/eternal-hope-necklace-silver-gift-ready-display.png",
+    "/products/silver/eternal-hope-necklace-silver-jewelry-box-closeup.jpg",
+    "/products/silver/eternal-hope-necklace-silver-message-card-detail.png",
+    "/products/silver/eternal-hope-necklace-silver-necklace-detail.png"
   ]
 } as const
 
 export const signatureProduct = {
   name: "Eternal Hope Necklace",
-  subtitle: "One meaningful keepsake. Two timeless colorways.",
+  subtitle: "A gift-ready necklace made to say what ordinary presents cannot.",
   statement:
-    "You are not buying a necklace for its own sake. You are giving someone words they have needed to hear, wrapped in a gift they can wear close every day.",
+    "You are not buying a necklace for its own sake. You are giving someone words they have needed to hear, already framed inside a premium box they can open, wear, and remember.",
   representation:
     "It represents bond, loyalty, gratitude, and the kind of love that keeps showing up when life gets heavy.",
   finishes: {
     gold: {
-      label: "Gold",
-      price: "$39.99",
+      label: "18K Yellow Gold",
+      price: "$59.99",
       accent: "Warm, luminous, celebratory",
       note: "For shoppers who want a richer glow, a more elevated reveal, and a finish that feels warm and radiant.",
       heroImage: productImages.gold[0],
-      alt: "Gold Eternal Hope Necklace beside a luxury wood gift box"
+      alt: "18K yellow gold Eternal Hope Necklace displayed over a heartfelt message card in a premium gift box"
     },
     silver: {
-      label: "Silver",
-      price: "$29.99",
-      accent: "Clean, bright, modern",
-      note: "For shoppers who want crisp brilliance, a polished modern look, and an elegant everyday keepsake.",
+      label: "14K White Gold",
+      price: "$59.99",
+      accent: "Clean, bright, silver-toned",
+      note: "For shoppers who want crisp brilliance, a polished white-gold look, and an elegant everyday keepsake.",
       heroImage: productImages.silver[0],
-      alt: "Silver Eternal Hope Necklace beside a luxury wood gift box"
+      alt: "14K white gold Eternal Hope Necklace displayed over a heartfelt message card in a premium gift box"
     }
   }
 } as const
@@ -123,24 +124,27 @@ export const shopGallery = {
     productImages.gold[0],
     productImages.gold[1],
     productImages.gold[2],
+    productImages.gold[3],
     productImages.gold[4],
-    productImages.gold[7],
-    productImages.gold[8]
+    productImages.gold[5],
+    productImages.gold[6]
   ],
   silver: [
     productImages.silver[0],
     productImages.silver[1],
     productImages.silver[2],
+    productImages.silver[3],
     productImages.silver[4],
-    productImages.silver[7],
-    productImages.silver[8]
+    productImages.silver[5],
+    productImages.silver[6],
+    productImages.silver[7]
   ]
 } as const
 
 export const shopAssurances = [
   "Premium gift box and message card presentation",
-  "Available in both gold and silver finishes",
-  "One signature product designed around emotion, gratitude, and keepsake value",
+  "Secure cart with smooth mobile checkout",
+  "Available in 18K yellow gold and 14K white gold finishes",
   "Crafted to represent love, bond, loyalty, and appreciation"
 ] as const
 
@@ -158,7 +162,7 @@ export const shopFaqs = [
   {
     question: "Which finish should I choose?",
     answer:
-      "Gold feels warmer and more radiant. Silver feels brighter and more modern. Both are the same signature keepsake, so the best choice is the one that feels most like them."
+      "18K yellow gold feels warmer and more radiant. 14K white gold feels brighter and more modern. Both are the same signature keepsake, so the best choice is the one that feels most like them."
   }
 ] as const
 
@@ -356,7 +360,7 @@ export const articlePages = {
       {
         heading: "Clear finish choices reduce hesitation.",
         paragraphs: [
-          "Shoppers convert faster when gold and silver options are easy to understand and easy to select. Large click targets, obvious visual changes, and simple language help people feel in control.",
+          "Shoppers convert faster when yellow gold and white gold options are easy to understand and easy to select. Large click targets, obvious visual changes, and simple language help people feel in control.",
           "If customers have to guess which image belongs to which option, trust drops immediately."
         ]
       },
