@@ -61,11 +61,17 @@ function loadShopifyScript() {
 interface ShopifyBuyButtonProps {
   className?: string
   onAddToCart?: () => void
+  onInitiateCheckout?: () => void
 }
 
-export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonProps) {
+export function ShopifyBuyButton({
+  className,
+  onAddToCart,
+  onInitiateCheckout
+}: ShopifyBuyButtonProps) {
   const nodeRef = useRef<HTMLDivElement>(null)
   const lastTrackAtRef = useRef(0)
+  const lastCheckoutTrackAtRef = useRef(0)
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading")
 
   useEffect(() => {
@@ -92,6 +98,39 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
       }
 
       onAddToCart?.()
+    }
+
+    const trackInitiateCheckout = () => {
+      const now = Date.now()
+
+      if (now - lastCheckoutTrackAtRef.current < 900) {
+        return
+      }
+
+      lastCheckoutTrackAtRef.current = now
+
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "InitiateCheckout")
+      }
+
+      onInitiateCheckout?.()
+    }
+
+    const bindCheckoutTracking = () => {
+      const interactiveElements = mountNode.querySelectorAll<HTMLButtonElement | HTMLAnchorElement>(
+        "button, a"
+      )
+
+      interactiveElements.forEach((element) => {
+        const label = element.textContent?.trim().toLowerCase() ?? ""
+
+        if (label !== "checkout" || element.dataset.metaCheckoutBound === "true") {
+          return
+        }
+
+        element.dataset.metaCheckoutBound = "true"
+        element.addEventListener("click", trackInitiateCheckout)
+      })
     }
 
     async function mountBuyButton() {
@@ -141,7 +180,7 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
                 options: true
               },
               text: {
-                button: "Buy now"
+                button: "Add to cart"
               },
               styles: {
                 product: {
@@ -323,7 +362,7 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
                 buttonWithQuantity: false
               },
               text: {
-                button: "Buy now"
+                button: "Add to cart"
               },
               styles: {
                 button: {
@@ -344,8 +383,19 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
           }
         })
 
+        bindCheckoutTracking()
+
+        const observer = new MutationObserver(() => {
+          bindCheckoutTracking()
+        })
+        observer.observe(mountNode, { childList: true, subtree: true })
+
         if (isMounted) {
           setStatus("ready")
+        }
+
+        return () => {
+          observer.disconnect()
         }
       } catch {
         if (isMounted) {
@@ -354,20 +404,25 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
       }
     }
 
-    mountBuyButton()
+    let cleanup: (() => void) | undefined
+
+    mountBuyButton().then((teardown) => {
+      cleanup = teardown
+    })
 
     return () => {
       isMounted = false
+      cleanup?.()
       mountNode.innerHTML = ""
     }
-  }, [onAddToCart])
+  }, [onAddToCart, onInitiateCheckout])
 
   return (
     <div className={cn("relative", className)}>
       {status === "ready" ? (
         <div className="mb-4 flex items-center gap-3 rounded-[1rem] border border-gold/20 bg-gold/10 px-4 py-3 text-sm text-white/80">
           <CheckCircle2 className="h-4 w-4 text-gold" />
-          Secure cart is ready. Choose your finish and buy now below.
+          Secure cart is ready. Choose your finish and add it to cart below.
         </div>
       ) : null}
       {status === "error" ? (
@@ -381,14 +436,12 @@ export function ShopifyBuyButton({ className, onAddToCart }: ShopifyBuyButtonPro
             <div className="w-full rounded-[1.2rem] border border-white/10 bg-white/[0.045] px-4 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
               <div className="flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-white">Buy now</p>
+                  <p className="text-sm font-semibold text-white">Add to cart</p>
                   <p className="mt-1 text-xs leading-5 text-foreground/65">
                     Secure checkout is loading.
                   </p>
                 </div>
-                <div className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-[#09070f]">
-                  Buy now
-                </div>
+                <div className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-[#09070f]">Add to cart</div>
               </div>
             </div>
           </div>

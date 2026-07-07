@@ -5,6 +5,7 @@ import Image from "next/image"
 import {
   ArrowRight,
   Bell,
+  Check,
   CheckCircle2,
   Gift,
   Lock,
@@ -42,6 +43,7 @@ export function ShopExperience() {
   const [showToast, setShowToast] = useState(false)
   const [showPrompt, setShowPrompt] = useState(false)
   const [cartCelebration, setCartCelebration] = useState(false)
+  const [checkoutPulse, setCheckoutPulse] = useState(false)
   const badgeImage = shopGallery[finish][5]
 
   useEffect(() => {
@@ -94,6 +96,11 @@ export function ShopExperience() {
     window.setTimeout(() => setCartCelebration(false), 4000)
   }, [])
 
+  const handleInitiateCheckout = useCallback(() => {
+    setCheckoutPulse(true)
+    window.setTimeout(() => setCheckoutPulse(false), 3000)
+  }, [])
+
   const galleryHighlights = [
     productImages.gold[1],
     productImages.silver[1],
@@ -101,6 +108,13 @@ export function ShopExperience() {
     productImages.silver[3],
     productImages.gold[4],
     productImages.silver[4]
+  ] as const
+
+  const includedItems = [
+    "Signature necklace with sparkling center stone",
+    "Heartfelt message card already paired with the piece",
+    "Premium gift box presentation ready to hand over",
+    "Secure mobile-friendly cart and checkout"
   ] as const
 
   return (
@@ -124,7 +138,7 @@ export function ShopExperience() {
                   Gift-ready checkout
                 </p>
                 <p className="mt-1 text-sm leading-6 text-foreground/75">
-                  Choose a finish, buy now, and checkout securely.
+                  Choose a finish, add it to cart, and checkout securely.
                 </p>
               </div>
             </div>
@@ -149,7 +163,7 @@ export function ShopExperience() {
                 onClick={scrollToCheckout}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
               >
-                Buy now
+                Go to checkout
                 <ArrowRight className="h-4 w-4" />
               </button>
               <button
@@ -206,7 +220,13 @@ export function ShopExperience() {
               ))}
             </div>
 
-            <div id="secure-checkout" className="scroll-mt-28 rounded-[1.35rem] border border-gold/20 bg-[#100b18] p-4 shadow-velvet sm:p-5">
+            <div
+              id="secure-checkout"
+              className={cn(
+                "scroll-mt-28 rounded-[1.35rem] border border-gold/20 bg-[#100b18] p-4 shadow-velvet transition-shadow duration-300 sm:p-5",
+                checkoutPulse && "shadow-[0_0_0_1px_rgba(242,199,106,0.38),0_0_36px_rgba(242,199,106,0.2)]"
+              )}
+            >
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div className="space-y-1">
                   <p className="inline-flex items-center gap-2 text-sm font-semibold text-gold">
@@ -214,7 +234,7 @@ export function ShopExperience() {
                     Secure checkout
                   </p>
                   <h2 className="font-display text-3xl leading-tight text-white">
-                    Buy the necklace now.
+                    Add the necklace to cart.
                   </h2>
                   <p className="max-w-xl text-sm leading-7 text-foreground/70">
                     Previewing {activeFinish.label}. Confirm the finish in the selector,
@@ -225,7 +245,25 @@ export function ShopExperience() {
                   1 signature gift
                 </div>
               </div>
-              <ShopifyBuyButton onAddToCart={handleAddToCart} />
+              <div className="mb-4 grid gap-2 rounded-[1rem] border border-white/10 bg-black/[0.18] p-4 sm:grid-cols-2">
+                {includedItems.map((item, index) => (
+                  <div key={item} className="inline-flex items-start gap-3 text-sm leading-6 text-white/82">
+                    <span
+                      className={cn(
+                        "mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
+                        index % 2 === 0 ? "bg-gold/18 text-gold" : "bg-lavender/18 text-lavender"
+                      )}
+                    >
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <ShopifyBuyButton
+                onAddToCart={handleAddToCart}
+                onInitiateCheckout={handleInitiateCheckout}
+              />
             </div>
 
             <div className="grid gap-3 text-sm text-white/80 sm:grid-cols-2">
@@ -264,7 +302,7 @@ export function ShopExperience() {
                 />
                 <span className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/75 px-3 py-2 text-xs font-semibold text-white backdrop-blur">
                   <Sparkles className="h-3.5 w-3.5 text-gold" />
-                  Tap to buy
+                  View the full gift set
                 </span>
               </button>
             </div>
@@ -353,7 +391,7 @@ export function ShopExperience() {
               onClick={scrollToCheckout}
               className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
             >
-              Buy now
+              Go to checkout
               <ArrowRight className="h-4 w-4" />
             </button>
           </article>
@@ -484,7 +522,7 @@ export function ShopExperience() {
                 onClick={scrollToCheckout}
                 className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-gold"
               >
-                Buy now
+                Go to checkout
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </div>
@@ -567,7 +605,7 @@ export function ShopExperience() {
                   }}
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  Buy now
+                  Go to checkout
                   <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
@@ -587,10 +625,10 @@ export function ShopExperience() {
           <button
             type="button"
             onClick={scrollToCheckout}
-            aria-label="Buy now with secure checkout"
+            aria-label="Go to secure checkout"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
           >
-            Buy now
+            Go to checkout
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>
