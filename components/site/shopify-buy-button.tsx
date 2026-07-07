@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { CheckCircle2 } from "lucide-react"
 import { shopifyBuyButton } from "@/data/site"
 import { cn } from "@/lib/utils"
+import { trackMetaAddToCart, trackMetaInitiateCheckout } from "@/lib/meta-pixel"
 
 declare global {
   interface Window {
@@ -93,9 +94,8 @@ export function ShopifyBuyButton({
 
       lastTrackAtRef.current = now
 
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "AddToCart")
-      }
+      trackMetaAddToCart()
+      trackMetaInitiateCheckout()
 
       onAddToCart?.()
     }
@@ -109,9 +109,7 @@ export function ShopifyBuyButton({
 
       lastCheckoutTrackAtRef.current = now
 
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "InitiateCheckout")
-      }
+      trackMetaInitiateCheckout()
 
       onInitiateCheckout?.()
     }
