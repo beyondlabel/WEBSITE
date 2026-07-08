@@ -117,11 +117,17 @@ export function ShopExperience() {
     "Secure mobile-friendly cart and checkout"
   ] as const
 
+  const mobileDecisionPoints = [
+    "Gift box and message card already included",
+    "Two finishes, same secure checkout",
+    "Designed to feel complete the moment they open it"
+  ] as const
+
   return (
     <div className="relative z-10">
       <section className="px-4 pb-12 pt-24 sm:px-6 sm:pb-16 sm:pt-36">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
-          <div className="space-y-6">
+          <div className="order-2 space-y-6 lg:order-1">
             <div className="inline-flex max-w-full items-center gap-3 rounded-[1rem] border border-white/10 bg-black/[0.26] p-2.5 pr-4">
               <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-[0.8rem] border border-white/10 bg-white/5">
                 <Image
@@ -144,20 +150,49 @@ export function ShopExperience() {
             </div>
 
             <div className="space-y-5">
-              <h1 className="max-w-4xl font-display text-[clamp(3.05rem,7vw,4.85rem)] leading-[0.96] tracking-[-0.02em] text-white text-balance">
+              <div className="flex flex-wrap items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-gold/80">
+                <span className="rounded-full border border-gold/20 bg-gold/[0.08] px-3 py-1.5">
+                  One signature gift
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-white/72">
+                  {activeFinish.price}
+                </span>
+                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-white/72">
+                  Mobile checkout
+                </span>
+              </div>
+
+              <h1 className="max-w-4xl font-display text-[clamp(2.7rem,9vw,4.85rem)] leading-[0.96] tracking-[-0.02em] text-white text-balance">
                 Buy the Eternal Hope Necklace
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-foreground/80 text-pretty">
-                {signatureProduct.subtitle} It arrives with the necklace, message card, and premium
-                box already working together, so the person opening it immediately understands why
-                it was chosen for them.
+              <p className="max-w-2xl text-base leading-7 text-foreground/80 text-pretty sm:text-lg sm:leading-8">
+                {signatureProduct.subtitle} The necklace, message card, and premium box already
+                come together so the moment feels polished before you ever say another word.
               </p>
+              <div className="grid gap-2.5">
+                {mobileDecisionPoints.map((point, index) => (
+                  <div
+                    key={point}
+                    className="inline-flex items-start gap-3 rounded-[1rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm leading-6 text-white/82"
+                  >
+                    <span
+                      className={cn(
+                        "mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
+                        index === 1 ? "bg-lavender/18 text-lavender" : "bg-gold/18 text-gold"
+                      )}
+                    >
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
               <p className="max-w-3xl text-sm leading-7 text-gold/80">
                 {signatureProduct.representation}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="hidden flex-wrap gap-3 sm:flex">
               <button
                 type="button"
                 onClick={scrollToCheckout}
@@ -233,12 +268,12 @@ export function ShopExperience() {
                     <Lock className="h-4 w-4" />
                     Secure checkout
                   </p>
-                  <h2 className="font-display text-3xl leading-tight text-white">
+                  <h2 className="font-display text-[2rem] leading-tight text-white sm:text-3xl">
                     Add the necklace to cart.
                   </h2>
                   <p className="max-w-xl text-sm leading-7 text-foreground/70">
-                    Previewing {activeFinish.label}. Confirm the finish in the selector,
-                    then checkout smoothly on mobile or desktop.
+                    This is the main buy section. Confirm {activeFinish.label}, add it to cart,
+                    and checkout from the same flow without hunting through extra shop buttons.
                   </p>
                 </div>
                 <div className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-white/70 sm:block">
@@ -283,9 +318,17 @@ export function ShopExperience() {
             </div>
           </div>
 
-          <div className="space-y-4 lg:sticky lg:top-28">
+          <div className="order-1 space-y-4 lg:order-2 lg:sticky lg:top-28">
             <div id="product-gallery" className="relative overflow-hidden rounded-[1.45rem] border border-white/10 bg-white/[0.045] p-2.5 shadow-halo">
               <BondAnimation />
+              <div className="pointer-events-none absolute inset-x-5 top-5 z-10 flex items-start justify-between gap-3">
+                <div className="rounded-full border border-white/10 bg-black/70 px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-gold backdrop-blur">
+                  {activeFinish.label}
+                </div>
+                <div className="rounded-full border border-white/10 bg-black/70 px-3 py-2 text-sm font-semibold text-white backdrop-blur">
+                  {activeFinish.price}
+                </div>
+              </div>
               <button
                 type="button"
                 onClick={scrollToCheckout}
@@ -297,12 +340,12 @@ export function ShopExperience() {
                   alt={`${activeFinish.label} Eternal Hope Necklace gift-ready product photo`}
                   width={1200}
                   height={1200}
-                  className="aspect-square w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
+                  className="aspect-[0.92/1] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015] sm:aspect-square"
                   priority
                 />
                 <span className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/75 px-3 py-2 text-xs font-semibold text-white backdrop-blur">
                   <Sparkles className="h-3.5 w-3.5 text-gold" />
-                  View the full gift set
+                  Necklace, card, and box together
                 </span>
               </button>
             </div>
@@ -389,7 +432,7 @@ export function ShopExperience() {
             <button
               type="button"
               onClick={scrollToCheckout}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5"
+              className="mt-5 hidden items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
             >
               Go to checkout
               <ArrowRight className="h-4 w-4" />
