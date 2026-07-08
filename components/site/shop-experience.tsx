@@ -257,13 +257,13 @@ export function ShopExperience() {
                           />
                         </div>
                         <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-base font-semibold">{signatureProduct.finishes[key].label}</span>
-                            <span className="rounded-full border border-white/10 px-2.5 py-1 text-xs font-semibold text-foreground/70">
-                              {signatureProduct.finishes[key].price}
-                            </span>
-                          </div>
-                          <p className="mt-2 text-sm leading-6 text-foreground/70">
+                          <span className="block text-base font-semibold">
+                            {signatureProduct.finishes[key].label}
+                          </span>
+                          <p className="mt-1 text-base font-extrabold text-gold">
+                            {signatureProduct.finishes[key].price}
+                          </p>
+                          <p className="mt-1 text-sm leading-6 text-foreground/70">
                             {signatureProduct.finishes[key].accent}
                           </p>
                         </div>
@@ -291,7 +291,7 @@ export function ShopExperience() {
                     Add to cart
                   </h2>
                   <p className="max-w-xl text-sm leading-7 text-foreground/70">
-                    Pick your finish and buy from this section. No extra shop buttons, no detours.
+                    Pick your finish, add it to cart, and checkout here.
                   </p>
                 </div>
                 <div className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-white/70 sm:block">

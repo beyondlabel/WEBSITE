@@ -64,7 +64,7 @@ export default function ShopPage() {
       url: "https://beyondlabelgifts.com/shop",
       priceCurrency: "USD",
       lowPrice: "59.99",
-      highPrice: "59.99",
+      highPrice: "69.99",
       offerCount: "2",
       availability: "https://schema.org/InStock"
     }

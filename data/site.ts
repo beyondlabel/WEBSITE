@@ -37,7 +37,7 @@ export const signatureProduct = {
   finishes: {
     gold: {
       label: "18K Yellow Gold",
-      price: "$59.99",
+      price: "$69.99",
       accent: "Warm, luminous, celebratory",
       note: "For shoppers who want a richer glow, a more elevated reveal, and a finish that feels warm and radiant.",
       heroImage: productImages.gold[0],
