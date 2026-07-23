@@ -1,34 +1,103 @@
 # Shopify Meta Purchase Snippet
 
-Paste this into Shopify's customer events/custom pixel area or the order status/thank-you page logic that has access to the final order value.
+Use this in Shopify admin under **Settings > Customer events > Add custom pixel**. This is the only place `Purchase` should fire, because Shopify has the completed checkout and final paid total there.
 
-```html
-<script>
-  (function () {
-    function firePurchase(event) {
-      var order = event && event.data && event.data.checkout
-      if (!order) return
+```js
+const META_PIXEL_ID = "1681765013039977"
 
-      var total = Number(order.totalPrice && order.totalPrice.amount ? order.totalPrice.amount : order.total_price || 0)
-      var currency = order.currencyCode || order.currency || "USD"
+!(function (f, b, e, v, n, t, s) {
+  if (f.fbq) return
+  n = f.fbq = function () {
+    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+  }
+  if (!f._fbq) f._fbq = n
+  n.push = n
+  n.loaded = true
+  n.version = "2.0"
+  n.queue = []
+  t = b.createElement(e)
+  t.async = true
+  t.src = v
+  s = b.getElementsByTagName(e)[0]
+  s.parentNode.insertBefore(t, s)
+})(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js")
 
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "Purchase", {
-          value: total,
-          currency: currency
-        })
-      }
+fbq("init", META_PIXEL_ID)
+
+function moneyAmount(money) {
+  const amount = Number(money && money.amount)
+  return Number.isFinite(amount) ? amount : 0
+}
+
+function lineItemId(item) {
+  return (
+    item?.variant?.sku ||
+    item?.variant?.id ||
+    item?.merchandise?.sku ||
+    item?.merchandise?.id ||
+    item?.id ||
+    "eternal-hope-necklace"
+  )
+}
+
+function lineItemTitle(item) {
+  return (
+    item?.variant?.title ||
+    item?.merchandise?.title ||
+    item?.title ||
+    "Eternal Hope Necklace"
+  )
+}
+
+analytics.subscribe("checkout_completed", function (event) {
+  const checkout = event && event.data && event.data.checkout
+  if (!checkout) return
+
+  const lineItems = Array.isArray(checkout.lineItems) ? checkout.lineItems : []
+  const contents = lineItems.map(function (item) {
+    const quantity = Number(item.quantity || 1)
+    const itemPrice =
+      moneyAmount(item.finalLinePrice) ||
+      moneyAmount(item.cost && item.cost.totalAmount) ||
+      moneyAmount(item.variant && item.variant.price) ||
+      moneyAmount(item.merchandise && item.merchandise.price)
+
+    return {
+      id: lineItemId(item),
+      quantity: Number.isFinite(quantity) ? quantity : 1,
+      item_price: itemPrice
     }
+  })
 
-    if (window.Shopify && window.Shopify.analytics && window.Shopify.analytics.subscribe) {
-      window.Shopify.analytics.subscribe("checkout_completed", firePurchase)
-    }
-  })();
-</script>
+  const value = moneyAmount(checkout.totalPrice)
+  const currency = checkout.currencyCode || checkout.totalPrice?.currencyCode || "USD"
+  const itemCount = contents.reduce(function (total, item) {
+    return total + item.quantity
+  }, 0)
+
+  fbq("track", "Purchase", {
+    value: value,
+    currency: currency,
+    content_type: "product",
+    content_ids: contents.map(function (item) {
+      return item.id
+    }),
+    content_name: lineItems.map(lineItemTitle).join(", ") || "Eternal Hope Necklace",
+    contents: contents,
+    num_items: itemCount || 1
+  })
+})
 ```
+
+Storefront event prices:
+
+| Finish | Meta value | Currency | Content ID |
+|---|---:|---|---|
+| 14K White Gold | 59.99 | USD | `eternal-hope-necklace-white-gold` |
+| 18K Yellow Gold | 69.99 | USD | `eternal-hope-necklace-yellow-gold` |
 
 Notes:
 
-- `Purchase` must use the real final order total, not `0.00`, or Meta ROAS will be misleading.
-- Keep the storefront `AddToCart` and `InitiateCheckout` events in the Next app.
-- Put `Purchase` on the Shopify side so it only fires after a successful order.
+- Keep `PageView`, `AddToCart`, and `InitiateCheckout` in the Next storefront.
+- Do not fire `Purchase` from the Next storefront or on the Shopify buy button click. That would count unpaid carts as revenue.
+- `Purchase` should use Shopify's completed checkout `totalPrice.amount`, not `0.00`, so Meta ROAS reflects actual revenue.

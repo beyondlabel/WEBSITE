@@ -29,6 +29,7 @@ export const productImages = {
 
 export const signatureProduct = {
   name: "Eternal Hope Necklace",
+  currency: "USD",
   subtitle: "A gift-ready necklace made to say what ordinary presents cannot.",
   statement:
     "You are not buying a necklace for its own sake. You are giving someone words they have needed to hear, already framed inside a premium box they can open, wear, and remember.",
@@ -38,6 +39,8 @@ export const signatureProduct = {
     gold: {
       label: "18K Yellow Gold",
       price: "$69.99",
+      priceValue: 69.99,
+      sku: "eternal-hope-necklace-yellow-gold",
       accent: "Warm, luminous, celebratory",
       note: "For shoppers who want a richer glow, a more elevated reveal, and a finish that feels warm and radiant.",
       heroImage: productImages.gold[0],
@@ -46,6 +49,8 @@ export const signatureProduct = {
     silver: {
       label: "14K White Gold",
       price: "$59.99",
+      priceValue: 59.99,
+      sku: "eternal-hope-necklace-white-gold",
       accent: "Clean, bright, silver-toned",
       note: "For shoppers who want crisp brilliance, a polished white-gold look, and an elegant everyday keepsake.",
       heroImage: productImages.silver[0],

@@ -99,6 +99,10 @@ export function ShopExperience() {
     window.setTimeout(() => setCheckoutPulse(false), 3000)
   }, [])
 
+  const handleShopifyFinishChange = useCallback((nextFinish: FinishKey) => {
+    setFinish(nextFinish)
+  }, [])
+
   const galleryHighlights = [
     productImages.gold[1],
     productImages.silver[1],
@@ -149,6 +153,7 @@ export function ShopExperience() {
                   height={1200}
                   className="aspect-[0.92/1] w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015] sm:aspect-square"
                   priority
+                  fetchPriority="high"
                 />
                 <span className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-black/75 px-3 py-2 text-xs font-semibold text-white backdrop-blur">
                   <Sparkles className="h-3.5 w-3.5 text-gold" />
@@ -291,12 +296,25 @@ export function ShopExperience() {
                     Add to cart
                   </h2>
                   <p className="max-w-xl text-sm leading-7 text-foreground/70">
-                    Pick your finish, add it to cart, and checkout here.
+                    Your selected finish, gift box, and message card stay together through checkout.
                   </p>
                 </div>
                 <div className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-semibold text-white/70 sm:block">
                   Main buy section
                 </div>
+              </div>
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[1rem] border border-gold/20 bg-gold/[0.08] px-4 py-3">
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gold/80">
+                    Selected gift
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-white">
+                    {activeFinish.label} Eternal Hope Necklace
+                  </p>
+                </div>
+                <p className="text-xl font-extrabold text-gold" aria-live="polite">
+                  {activeFinish.price}
+                </p>
               </div>
               <div className="mb-4 grid gap-2 rounded-[1rem] border border-white/10 bg-black/[0.18] p-4 sm:grid-cols-2">
                 {includedItems.map((item, index) => (
@@ -314,6 +332,8 @@ export function ShopExperience() {
                 ))}
               </div>
               <ShopifyBuyButton
+                selectedFinish={finish}
+                onFinishChange={handleShopifyFinishChange}
                 onAddToCart={handleAddToCart}
                 onInitiateCheckout={handleInitiateCheckout}
               />

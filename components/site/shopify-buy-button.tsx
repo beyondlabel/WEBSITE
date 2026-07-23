@@ -2,9 +2,13 @@
 
 import { useEffect, useRef, useState } from "react"
 import { CheckCircle2 } from "lucide-react"
-import { shopifyBuyButton } from "@/data/site"
+import { shopifyBuyButton, signatureProduct } from "@/data/site"
 import { cn } from "@/lib/utils"
-import { trackMetaAddToCart, trackMetaInitiateCheckout } from "@/lib/meta-pixel"
+import {
+  type MetaCommercePayload,
+  trackMetaAddToCart,
+  trackMetaInitiateCheckout
+} from "@/lib/meta-pixel"
 
 declare global {
   interface Window {
@@ -23,6 +27,80 @@ declare global {
 const shopifyScriptUrl = "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"
 
 let shopifyScriptPromise: Promise<void> | null = null
+
+type FinishKey = keyof typeof signatureProduct.finishes
+
+function finishFromText(value: string): FinishKey | null {
+  const normalized = value.toLowerCase()
+
+  if (normalized.includes("white gold") || normalized.includes("silver") || normalized.includes("14k")) {
+    return "silver"
+  }
+
+  if (normalized.includes("yellow gold") || normalized.includes("18k")) {
+    return "gold"
+  }
+
+  if (normalized.includes("gold") && !normalized.includes("white")) {
+    return "gold"
+  }
+
+  return null
+}
+
+function buildMetaPayload(finish: FinishKey): MetaCommercePayload {
+  const finishData = signatureProduct.finishes[finish]
+
+  return {
+    value: finishData.priceValue,
+    currency: signatureProduct.currency,
+    content_name: `${signatureProduct.name} - ${finishData.label}`,
+    content_type: "product",
+    content_ids: [finishData.sku],
+    contents: [
+      {
+        id: finishData.sku,
+        quantity: 1,
+        item_price: finishData.priceValue
+      }
+    ],
+    num_items: 1
+  }
+}
+
+function getSelectedShopifyFinish(node: HTMLElement | null, fallback: FinishKey): FinishKey {
+  if (!node) {
+    return fallback
+  }
+
+  const selectedText = Array.from(node.querySelectorAll<HTMLSelectElement>("select"))
+    .map((select) => {
+      const option = select.options[select.selectedIndex]
+      return `${option?.textContent ?? ""} ${option?.value ?? ""}`
+    })
+    .join(" ")
+
+  return finishFromText(selectedText) ?? fallback
+}
+
+function syncShopifyFinishSelector(node: HTMLElement | null, finish: FinishKey) {
+  if (!node) {
+    return
+  }
+
+  Array.from(node.querySelectorAll<HTMLSelectElement>("select")).forEach((select) => {
+    const matchingOption = Array.from(select.options).find((option) => {
+      return finishFromText(`${option.textContent ?? ""} ${option.value}`) === finish
+    })
+
+    if (!matchingOption || select.value === matchingOption.value) {
+      return
+    }
+
+    select.value = matchingOption.value
+    select.dispatchEvent(new Event("change", { bubbles: true }))
+  })
+}
 
 function loadShopifyScript() {
   if (typeof window === "undefined") {
@@ -61,19 +139,29 @@ function loadShopifyScript() {
 
 interface ShopifyBuyButtonProps {
   className?: string
-  onAddToCart?: () => void
-  onInitiateCheckout?: () => void
+  selectedFinish: FinishKey
+  onFinishChange?: (finish: FinishKey) => void
+  onAddToCart?: (payload: MetaCommercePayload) => void
+  onInitiateCheckout?: (payload: MetaCommercePayload) => void
 }
 
 export function ShopifyBuyButton({
   className,
+  selectedFinish,
+  onFinishChange,
   onAddToCart,
   onInitiateCheckout
 }: ShopifyBuyButtonProps) {
   const nodeRef = useRef<HTMLDivElement>(null)
+  const selectedFinishRef = useRef(selectedFinish)
   const lastTrackAtRef = useRef(0)
   const lastCheckoutTrackAtRef = useRef(0)
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading")
+
+  useEffect(() => {
+    selectedFinishRef.current = selectedFinish
+    syncShopifyFinishSelector(nodeRef.current, selectedFinish)
+  }, [selectedFinish])
 
   useEffect(() => {
     let isMounted = true
@@ -84,6 +172,13 @@ export function ShopifyBuyButton({
     }
 
     const mountNode = node
+    const resolveTrackingPayload = () => {
+      const finish = getSelectedShopifyFinish(mountNode, selectedFinishRef.current)
+      selectedFinishRef.current = finish
+      onFinishChange?.(finish)
+
+      return buildMetaPayload(finish)
+    }
 
     const trackAddToCart = () => {
       const now = Date.now()
@@ -94,10 +189,11 @@ export function ShopifyBuyButton({
 
       lastTrackAtRef.current = now
 
-      trackMetaAddToCart()
-      trackMetaInitiateCheckout()
+      const payload = resolveTrackingPayload()
 
-      onAddToCart?.()
+      trackMetaAddToCart(payload)
+
+      onAddToCart?.(payload)
     }
 
     const trackInitiateCheckout = () => {
@@ -109,9 +205,28 @@ export function ShopifyBuyButton({
 
       lastCheckoutTrackAtRef.current = now
 
-      trackMetaInitiateCheckout()
+      const payload = resolveTrackingPayload()
 
-      onInitiateCheckout?.()
+      trackMetaInitiateCheckout(payload)
+
+      onInitiateCheckout?.(payload)
+    }
+
+    const bindFinishTracking = () => {
+      const selects = mountNode.querySelectorAll<HTMLSelectElement>("select")
+
+      selects.forEach((select) => {
+        if (select.dataset.metaFinishBound === "true") {
+          return
+        }
+
+        select.dataset.metaFinishBound = "true"
+        select.addEventListener("change", () => {
+          const finish = getSelectedShopifyFinish(mountNode, selectedFinishRef.current)
+          selectedFinishRef.current = finish
+          onFinishChange?.(finish)
+        })
+      })
     }
 
     const bindCheckoutTracking = () => {
@@ -129,6 +244,12 @@ export function ShopifyBuyButton({
         element.dataset.metaCheckoutBound = "true"
         element.addEventListener("click", trackInitiateCheckout)
       })
+    }
+
+    const bindShopifyTracking = () => {
+      bindFinishTracking()
+      bindCheckoutTracking()
+      syncShopifyFinishSelector(mountNode, selectedFinishRef.current)
     }
 
     async function mountBuyButton() {
@@ -381,10 +502,10 @@ export function ShopifyBuyButton({
           }
         })
 
-        bindCheckoutTracking()
+        bindShopifyTracking()
 
         const observer = new MutationObserver(() => {
-          bindCheckoutTracking()
+          bindShopifyTracking()
         })
         observer.observe(mountNode, { childList: true, subtree: true })
 
@@ -413,7 +534,7 @@ export function ShopifyBuyButton({
       cleanup?.()
       mountNode.innerHTML = ""
     }
-  }, [onAddToCart, onInitiateCheckout])
+  }, [onAddToCart, onFinishChange, onInitiateCheckout])
 
   return (
     <div className={cn("relative", className)}>
